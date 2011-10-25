@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{FBBBBFF1-F9F5-4688-AE06-349022CD5B78}</ProjectGuid>
+    <ProjectGuid>{163B95BE-0AE9-4EC6-9D1B-762BBD473B7E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MovieLibrary.Core.Tests</RootNamespace>
-    <AssemblyName>MovieLibrary.Core.Tests</AssemblyName>
+    <RootNamespace>MovieLibrary.Storage.NHibernate.Tests</RootNamespace>
+    <AssemblyName>MovieLibrary.Storage.NHibernate.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,11 +31,29 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Core">
+      <HintPath>..\..\..\packages\Castle.Core.2.5.2\lib\NET35\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentNHibernate">
+      <HintPath>..\..\..\packages\FluentNHibernate.1.2.0.712\lib\FluentNHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections">
+      <HintPath>..\..\..\packages\Iesi.Collections.3.1.0.4000\lib\Net35\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="MavenThought.Commons">
+      <HintPath>..\..\..\packages\maventhought.commons.0.9.5\lib\MavenThought.Commons.dll</HintPath>
+    </Reference>
     <Reference Include="MavenThought.Commons.Testing.NUnit">
       <HintPath>..\..\..\packages\maventhought.testing.nunit.0.3.8\lib\NET35\MavenThought.Commons.Testing.NUnit.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation">
       <HintPath>..\..\..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate">
+      <HintPath>..\..\..\packages\NHibernate.3.1.0.4000\lib\Net35\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.ByteCode.Castle">
+      <HintPath>..\..\..\packages\NHibernate.Castle.3.1.0.4000\lib\Net35\NHibernate.ByteCode.Castle.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
       <HintPath>..\..\..\packages\NUnit.2.5.10.11092\lib\nunit.framework.dll</HintPath>
@@ -63,6 +81,9 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite">
+      <HintPath>..\..\..\packages\SQLitex64.1.0.66\lib\32\System.Data.SQLite.DLL</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -70,10 +91,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseStorageSpecification.cs" />
+    <Compile Include="PersistentMovieSpecification.cs">
+      <DependentUpon>BaseStorageSpecification.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="MovieSpecification.cs" />
-    <Compile Include="When_movie_properties_are_set.cs">
-      <DependentUpon>MovieSpecification.cs</DependentUpon>
+    <Compile Include="SimpleMediaLibrarySpecification.cs" />
+    <Compile Include="When_movie_is_created.cs">
+      <DependentUpon>PersistentMovieSpecification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="When_movie_is_added_to_the_storage.cs">
+      <DependentUpon>PersistentMovieSpecification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="When_storage_library_adds_movies.cs">
+      <DependentUpon>SimpleMediaLibrarySpecification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="When_storage_library_gets_contents.cs">
+      <DependentUpon>SimpleMediaLibrarySpecification.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -83,6 +117,10 @@
     <ProjectReference Include="..\..\..\main\MovieLibrary.Core\MovieLibrary.Core.csproj">
       <Project>{0B157B76-40F5-4BD8-AF99-6C18A05184A3}</Project>
       <Name>MovieLibrary.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\main\MovieLibrary.Storage.NHibernate\MovieLibrary.Storage.NHibernate.csproj">
+      <Project>{6F717570-9378-4176-9162-2F800A6B8908}</Project>
+      <Name>MovieLibrary.Storage.NHibernate</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

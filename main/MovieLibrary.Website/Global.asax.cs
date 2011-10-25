@@ -1,12 +1,6 @@
 ﻿using System.Web.Configuration;
 using System.Web.Mvc;
 using System.Web.Routing;
-using Castle.MicroKernel.Registration;
-using Castle.Windsor;
-using CommonServiceLocator.WindsorAdapter;
-using Microsoft.Practices.ServiceLocation;
-using MovieLibrary.Core;
-using MovieLibrary.Storage.NHibernate;
 
 namespace MovieLibrary.Website
 {
@@ -28,7 +22,7 @@ namespace MovieLibrary.Website
             //    "Default", // Route name
             //    "{controller}/{action}/{id}", // URL with parameters
             //    new { controller = "Movies", action = "Index", id = UrlParameter.Optional } // Parameter defaults
-            );
+            //);
 
         }
 
