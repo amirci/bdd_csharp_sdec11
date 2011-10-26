@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using Castle.Core;
+using MavenThought.Commons.Extensions;
 using MovieLibrary.Core;
 using TechTalk.SpecFlow;
 
@@ -13,22 +12,12 @@ namespace MovieLibrary.Acceptance.Tests.Steps
     [Binding]
     public class LibrarySteps : BaseSteps
     {
-        /// <summary>
-        /// Setup no movies exist
-        /// </summary>
-        [Given(@"I have no movies")]
-        public void ClearMovies()
+        [Given(@"I have contents in the library")]
+        public void AddSomeMovies()
         {
-            this.Library.Clear();
-        }
+            IEnumerable<string> titles = new[] {"Blazing Saddles", "Young Frankenstein", "Spaceballs"};
 
-        /// <summary>
-        /// Setup the movies in the library
-        /// </summary>
-        [Given(@"I have the following movies:")]
-        public void SetupMovies(Table movies)
-        {
-            movies.Rows.ForEach(row => AddMovieToStorage(row["title"]));
+            titles.ForEach(AddMovieToStorage);
         }
 
         /// <summary>
