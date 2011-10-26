@@ -40,8 +40,8 @@
     <Reference Include="Microsoft.Practices.ServiceLocation">
       <HintPath>..\..\..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
-    <Reference Include="MvcContrib.TestHelper">
-      <HintPath>..\..\..\packages\MvcContrib.Mvc3.TestHelper-ci.3.0.89.0\lib\MvcContrib.TestHelper.dll</HintPath>
+    <Reference Include="MvcContrib.TestHelper, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\MvcContrib.Mvc3.TestHelper-ci.3.0.90.0\lib\MvcContrib.TestHelper.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
       <HintPath>..\..\..\packages\NUnit.2.5.10.11092\lib\nunit.framework.dll</HintPath>
@@ -77,6 +77,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\MoviesControllerSpecification.cs" />
+    <Compile Include="Controllers\When_movies_controller_calls_index.cs">
+      <DependentUpon>MoviesControllerSpecification.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -92,9 +96,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
