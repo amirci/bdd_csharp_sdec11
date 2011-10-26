@@ -1,0 +1,16 @@
+﻿@using MovieLibrary.Core
+
+@model IEnumerable<IMovie>
+
+@{
+    ViewBag.Title = "Movie Library Contents";
+}
+
+@foreach(var movie in Model) {
+  <table class="element">
+    <tr>
+        <td class="title">@movie.Title</td>
+        <td class="image"></td>
+    </tr>
+  </table>
+}
