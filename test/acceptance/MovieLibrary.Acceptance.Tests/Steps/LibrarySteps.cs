@@ -12,12 +12,15 @@ namespace MovieLibrary.Acceptance.Tests.Steps
     [Binding]
     public class LibrarySteps : BaseSteps
     {
+        public static IEnumerable<string> Titles
+        {
+            get { return new[] { "Blazing Saddles", "Young Frankenstein", "Spaceballs" }; }  
+        } 
+
         [Given(@"I have contents in the library")]
         public void AddSomeMovies()
         {
-            IEnumerable<string> titles = new[] {"Blazing Saddles", "Young Frankenstein", "Spaceballs"};
-
-            titles.ForEach(AddMovieToStorage);
+            Titles.ForEach(AddMovieToStorage);
         }
 
         /// <summary>

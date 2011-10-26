@@ -23,27 +23,11 @@ namespace MovieLibrary.Acceptance.Tests.Steps
                     .Select(cell => cell.InnerHtml.Trim());
             }
         }
-
-        /// <summary>
-        /// Checks the movie is in the listing
-        /// </summary>
-        /// <param name="movies">Movies to look for</param>
-        [Then(@"I should see in the listing:")]
-        public void AssertListingContains(Table movies)
+        
+        [Then(@"I should see all the movies listed in the page")]
+        public void ShouldSeeAllMovies()
         {
-            var expected = movies.Rows.Select(row => row["title"]);
-
-            this.Listing.Should().Have.SameSequenceAs(expected);
-        }
-
-        /// <summary>
-        /// Checks the movie is in the listing
-        /// </summary>
-        /// <param name="title">Title to check for</param>
-        [Then(@"I should see ""(.*)"" in the listing")]
-        public void AssertListingContains(string title)
-        {
-            this.Listing.Should().Contain(title);
+            this.Listing.Should().Have.SameSequenceAs(LibrarySteps.Titles);
         }
 
         /// <summary>
