@@ -39,7 +39,7 @@ namespace MovieLibrary.Acceptance.Tests.Events
 
             context.Get<WebServer>().Shutdown();
 
-            context.Get<Browser>().Shutdown();
+            // context.Get<Browser>().Shutdown();
         }
     }
 }
