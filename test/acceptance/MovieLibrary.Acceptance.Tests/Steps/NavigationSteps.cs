@@ -9,6 +9,12 @@ namespace MovieLibrary.Acceptance.Tests.Steps
     [Binding]
     public class NavigationSteps : BaseSteps
     {
+        [When(@"I list the contents")]
+        public void ListTheContents()
+        {
+            GoToPage("Movies");
+        }
+
         /// <summary>
         /// Goes to the specified page
         /// </summary>
